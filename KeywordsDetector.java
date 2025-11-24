@@ -21,6 +21,57 @@ public class KeywordsDetector {
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
+        String[] lowSen = new String [sentences.length];
+        String[] loWord = new String [keywords.length];
+        for (int j = 0; j < lowSen.length; j++) {
+            lowSen[j] = sentences[j];
+            lowSen[j] = lowerCase(lowSen[j]);
+        }
+        for (int j = 0; j < loWord.length; j++) {
+            loWord[j] = keywords[j];
+            loWord[j] = lowerCase(loWord[j]);
+        }
+       for (int i = 0; i < sentences.length; i++) {
+            for (int j = 0; j < keywords.length; j++) {
+                if (contains (lowSen[i], loWord[j])) {
+                    System.out.println(sentences[i]);
+                    break;
+                }
+            }
+       }
+    }
+    /** Returns the lowercase version of the given string. */
+    public static String lowerCase(String str) {
+        String lowStr = "";
+        for (int i = 0; i < str.length(); i++) {
+            if ((str.charAt(i) >= 'A') && (str.charAt(i) <= 'Z')) {
+                lowStr = lowStr + (char)(str.charAt(i) + 32);
+            } else {
+                lowStr = lowStr + str.charAt(i);
+            }
+        }
+        return lowStr;
+    }
+
+    /** If str1 contains str2, returns true; otherwise returns false. */
+    public static boolean contains(String str1, String str2) {
+       if ((str1.length() < str2.length()) || (str1.length() == 0)) {
+        return false;
+       } else if (str2.length() == 0) return true; 
+       else {
+            int start = str1.indexOf(str2.charAt(0));
+            while ((start != -1) && (start + str2.length() <= str1.length())) {
+                boolean contain = true;
+                for (int i = 0; i < str2.length(); i++) {
+                  if (str1.charAt(start + i) != str2.charAt(i)) { 
+                    contain = false;
+                    break;
+                }
+             }
+             if (contain) return true;
+             start = str1.indexOf(str2.charAt(0), start + 1);
+            }  
+          }
+           return false;
     }
 }
