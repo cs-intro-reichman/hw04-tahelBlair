@@ -58,7 +58,7 @@ public class KeywordsDetector {
        if ((str1.length() < str2.length()) || (str1.length() == 0)) {
         return false;
        } else if (str2.length() == 0) return true; 
-       else {
+       else { 
             int start = str1.indexOf(str2.charAt(0));
             while ((start != -1) && (start + str2.length() <= str1.length())) {
                 boolean contain = true;

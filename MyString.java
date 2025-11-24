@@ -48,6 +48,6 @@ public class MyString {
              start = str1.indexOf(str2.charAt(0), start + 1);
             }  
           }
-           return false;
+           return false; 
     }
 }

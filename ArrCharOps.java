@@ -131,11 +131,11 @@ public class ArrCharOps {
      *  The hash code is computed as: arr[0]*7^(n-1) + arr[1]*7^(n-2) + ... + arr[n-2]*7 + arr[n-1]
      *  where arr[i] is the i'th character of the array, and n is the array's length.
      *  The hash value of an empty array is zero.
-     */
+     */ 
     public static long hashCode(char[] arr) {
         long hush = 0;
         for (int i = 0; i < arr.length; i++) {
-            hush = hush + arr[0]*(long)(Math.pow(7,(arr.length-i-1)));
+            hush = hush + arr[i]*(long)(Math.pow(7,(arr.length-i-1)));
         }
         return hush;
     }
